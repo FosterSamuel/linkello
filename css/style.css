@@ -47,6 +47,7 @@ input[name="startnote"] {
     border-bottom: 3px solid #4a9295;
 }
 
+
 input[name='addnote'] {
     background: #62BCBF;
     border-left: none;
@@ -54,6 +55,9 @@ input[name='addnote'] {
     border-top: none;
     color: white;
     font-size: 1.8em;
+    -webkit-border-radius:0px;
+    -webkit-appearance: none;
+    border-radius: 0;
 }
 
 
