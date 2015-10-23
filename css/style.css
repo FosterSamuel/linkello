@@ -1,17 +1,17 @@
 * {padding: 0; margin: 0; font-family: monospace;}
-body {   background: #d6d6d6;}
+body { background: #d6d6d6;}
 
 .notes, footer{width: 90%; margin: 0 auto; display: block;}
-.newnote { display: none; }
+.hidden { display: none; }
 
 header { 
-    color: #62BCBF; 
-    background: #f3f3f3;
-    height: auto;
+    background: white;
+    color: #62BCBF;
     font-size: 3em;
     font-weight: 200;
+    height: auto;
+    letter-spacing: 6px;
     text-align: center;
-    letter-spacing: 5px;
 }
 
 .inputarea {
@@ -21,27 +21,42 @@ header {
     margin: 0px auto;
 }
 
+input {
+    -webkit-border-radius:0px;
+    -webkit-appearance: none;
+    -webkit-box-sizing : border-box;
+    -moz-box-sizing : border-box;
+    box-sizing : border-box;
+    border-radius: 0;
+    display: block;
+    width: 100%;
+    font-size: 1.6em;
+    margin: 0 auto;
+    
+}
+
 input[name="startnote"] {
     margin: 0px auto;
     display: block;
     width: 100%;
-    font-size: 3em;
+    font-size: 5em;
     border-radius: 0px;
-    color: #ffffff;
+    color: white;
     border: 1px transparent;
     background: #62BCBF;
+    border-bottom: 3px solid #4a9295;
 }
 
-input {
-    -webkit-border-radius:0px;
-    border-radius: 0;
+input[name='addnote'] {
+    background: #62BCBF;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    color: white;
+    font-size: 1.8em;
 }
 
-input {
-    display: block;
-    width: 100%;
-    margin: 0 auto;
-}
+
 
 
 .notes { margin: 20px auto;}
