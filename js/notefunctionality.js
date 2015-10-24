@@ -67,9 +67,9 @@ $(document).ready(function() {
     
     function toggleNewNote() {
         newNoteOpen = !newNoteOpen;
-        $startNote.slideToggle(100);
+        $startNote.toggle();
         $header.toggleClass("opposite");
-        $newNote.slideToggle(100);
+        $newNote.toggle();
         
         if(newNoteOpen) {
             $noteLink.focus();
