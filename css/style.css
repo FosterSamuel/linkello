@@ -17,6 +17,10 @@ header {
 
 header.opposite {
     -webkit-animation-fill-mode: forwards;
+    -webkit-animation-name: header;
+    -webkit-animation-duration: .2s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
     animation-fill-mode: forwards;
     animation-name: header;
     animation-duration: .2s;
