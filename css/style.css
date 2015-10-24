@@ -81,7 +81,7 @@ input[name="link"] {
 
 input[name="link"], input[name="name"] {
     font-family: sans-serif;
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 input[name='addnote'] {
