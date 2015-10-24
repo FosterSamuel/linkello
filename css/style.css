@@ -1,8 +1,9 @@
 * {padding: 0; margin: 0; font-family: monospace;}
-body { background: #d6d6d6;}
+body {background: #3f7779;}
 
 .notes, footer{width: 90%; margin: 0 auto; display: block;}
 .hidden { display: none; }
+input[name="startnote"].hidden {display: none;}
 
 header { 
     background: white;
@@ -14,11 +15,30 @@ header {
     text-align: center;
 }
 
+header.opposite {
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    animation-name: header;
+    animation-duration: .2s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+
+@keyframes header {
+    0% {background-color: white; color: #62BCBF;}
+    100% {background-color: #62BCBF; color: white;}
+}
+
 .inputarea {
     background: #E0E0E0;
     display: block;
+    margin: 0 auto;
     width: 100%;
-    margin: 0px auto;
+}
+
+input:focus {
+    border: none;
 }
 
 input {
@@ -28,72 +48,74 @@ input {
     -moz-box-sizing : border-box;
     box-sizing : border-box;
     border-radius: 0;
+    border-top: 1px solid #1db4b9;
     display: block;
-    width: 100%;
-    font-size: 1.6em;
     margin: 0 auto;
-    
+    width: 100%;
 }
 
 input[name="startnote"] {
-    margin: 0px auto;
-    display: block;
-    width: 100%;
-    font-size: 5em;
+    background: #62BCBF;
+    border: 1px transparent;
+    border-bottom: 3px solid #4a9295;
     border-radius: 0px;
     color: white;
-    border: 1px transparent;
-    background: #62BCBF;
-    border-bottom: 3px solid #4a9295;
+    display: block;
+    font-size: 3em;
+    margin: 0px auto;
+    width: 100%;
 }
 
+input[name="link"], input[name="name"] {
+    font-family: sans-serif;
+    font-size: 1.5em;
+}
 
 input[name='addnote'] {
     background: #62BCBF;
+    border-radius: 0;
+    border-bottom: none;
     border-left: none;
     border-right: none;
     border-top: none;
     color: white;
     font-size: 1.8em;
+    padding: 2% 0;
     -webkit-border-radius:0px;
     -webkit-appearance: none;
-    border-radius: 0;
 }
 
-
-
-
-.notes { margin: 20px auto;}
+.notes { margin: 15px auto;}
 
 section { 
-    background: #F7F7F7; 
-    text-align: center; 
-    font-size: 1.5em;
-    margin: 5px auto;
-    padding: 5% 0;
-    width: 100%;
+    background: #f0f0f0; 
     border-radius: 2px;
     border-top: 5px solid #62BCBF;
+    font-size: 1.5em;
+    margin: 20px auto;
+    padding: 5% 0;
+    text-align: center;
+    width: 100%;
+    -webkit-box-shadow: 0px 4px 5px 0px rgba(35,76,77,0.63);
+    -moz-box-shadow: 0px 4px 5px 0px rgba(35,76,77,0.63);
+    box-shadow: 0px 4px 5px 0px rgba(35,76,77,0.63);
 }
 
 a {
     color: #62BCBF;
-    text-decoration: none;
     font-size: 1.5em;
+    text-decoration: none;
 }
-
 
 footer {
-    text-align: center;
-    position: relative;
-    right: 0;
     bottom: 0;
     left: 0;
+    right: 0;
+    position: relative;
+    text-align: center;
 }
 
-footer a { color: #349d9d; font-weight: bold; font-variant: small-caps; text-decoration: underline;}
-
-/* CONTAINER CODE */
+footer a { color: #ededed; font-variant: small-caps; font-weight: bold;  text-decoration: underline;}
 
 @media (min-width: 768px) {
   .container {
@@ -107,11 +129,11 @@ footer a { color: #349d9d; font-weight: bold; font-variant: small-caps; text-dec
   height: 100%;
 }
 
-/* CONTAINER CODE ENDS */
-
 
 /* Portrait tablets and larger */
 @media screen and (min-width: 768px) {
-
-
+    
+    .inputarea {
+        width: 40%;
+    }
 }

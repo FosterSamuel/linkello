@@ -25,6 +25,8 @@
     }
     
 $(document).ready(function() {
+    var $header = $('header');
+    
     var $startNote = $("input[name='startnote']");
     var $newNote = $(".newnote");
     var $addNote = $("input[name='addnote']");
@@ -65,11 +67,13 @@ $(document).ready(function() {
     
     function toggleNewNote() {
         newNoteOpen = !newNoteOpen;
-        $newNote.slideToggle(function() {
-            if(newNoteOpen) {
-                $noteLink.focus();
-            }   
-        });
+        $startNote.slideToggle(100);
+        $header.toggleClass("opposite");
+        $newNote.slideToggle(100);
+        
+        if(newNoteOpen) {
+            $noteLink.focus();
+        } 
     }
     
     function addNewNote() {
@@ -85,13 +89,11 @@ $(document).ready(function() {
             var newNote = {name: newNoteName, link:newNoteLink, id:linkAmount};
             
             addNote(newNote);
-            $section.append(createNoteHTML(linkAmount-1));
+            $section.html(createNoteHTML(linkAmount-1) + $section.html());
             
-            $newNote.slideToggle(function() {
-                newNoteOpen = !newNoteOpen;
-                $("input[name='name']").val("");
-                $("input[name='link']").val("");
-            });
+            toggleNewNote();
+            $("input[name='name']").val("");
+            $("input[name='link']").val("");
         } else {
             toggleNewNote();
         }
