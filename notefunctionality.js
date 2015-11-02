@@ -3,7 +3,7 @@
     
     function createNoteHTML(linkIndex) {
         var noteObject = links[linkIndex];
-        var $newNote = "<section class='note' data-id='" +noteObject.id + "'><a target='_blank' href='" + noteObject.link + "'>" + noteObject.name +  "  </a></section>";
+        var $newNote = "<section class='note' data-id='" +noteObject.id + "'><a target='_blank' href='" + noteObject.link + "'>" + noteObject.name +  "  </a><button class='kebab'><figure></figure><figure></figure><figure></figure></button></section>";
         
         return $newNote;
     }
@@ -33,6 +33,7 @@ $(document).ready(function() {
     
     var $noteName = $("input[name='name']");
     var $noteLink = $("input[name='link']");
+    var $noteSection = $("select[name='section']");
     
     var $section = $('.notes');
     var newNoteOpen = false;
@@ -77,18 +78,19 @@ $(document).ready(function() {
     }
     
     function addNewNote() {
-        console.log("called");
         var newNoteName =  $noteName.val();
         var newNoteLink = $noteLink.val();
+        var newNoteSection = $noteSection.val();
+        console.log(newNoteSection);
         
         if(newNoteName != "" && newNoteLink != "") {
             if(newNoteLink.substr(0, 6).toUpperCase() != "http://".toUpperCase()) {
                 newNoteLink = "http://" + newNoteLink;
             }
+        
+            addNote({name: newNoteName, link:newNoteLink, id:linkAmount, section:newNoteSection});
             
-            var newNote = {name: newNoteName, link:newNoteLink, id:linkAmount};
-            
-            addNote(newNote);
+            $section = $('.section-' + newNoteSection);
             $section.html(createNoteHTML(linkAmount-1) + $section.html());
             
             toggleNewNote();

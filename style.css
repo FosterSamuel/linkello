@@ -48,7 +48,7 @@ input:focus {
     border: none;
 }
 
-input {
+input{
     -webkit-border-radius:0px;
     -webkit-appearance: none;
     -webkit-box-sizing : border-box;
@@ -62,6 +62,23 @@ input {
     display: block;
     margin: 0 auto;
     width: 100%;
+}
+
+.kebab {
+    cursor: pointer;
+    float: right;
+    -webkit-appearance: none;
+    border: none;
+    background: transparent;
+    margin-right: 5%;
+}
+
+.kebab figure {
+    width: 6px;
+    height:6px;
+    border-radius: 5px;
+    background: #9d9d9d;
+    margin: 3px 0;
 }
 
 input[name="startnote"] {
@@ -80,10 +97,12 @@ input[name="link"] {
     border-bottom: 2px solid #1db4b9;
 }
 
-input[name="link"], input[name="name"] {
+input[name="link"], input[name="name"], select {
     font-family: sans-serif;
     font-size: 1.3em;
 }
+
+select { width: 100%; }
 
 input[name='addnote'] {
     background: #62BCBF;
@@ -138,7 +157,7 @@ section {
 
 a {
     color: #62BCBF;
-    font-size: 1.5em;
+    font-size: 1.3em;
     text-decoration: none;
 }
 

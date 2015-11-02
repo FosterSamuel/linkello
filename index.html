@@ -13,44 +13,35 @@
                 <input type="submit" name="startnote" value="+" tabindex="0"></input>
                 <div class="newnote hidden">
                     <input type="url" name="link" placeholder="http://"></input>
-                    <input type="text" name="name" placeholder="link title"></input>
+                    <input type="text" name="name" placeholder="Title"></input>
+                    <select name="section">
+                        <option disabled>Section</option>
+                        <option value="blue">Blue</option>
+                        <option value="orange">Orange</option>
+                        <option value="green">Green</option>
+                    </select>
                     <input type="submit" name="addnote" value="Add/Cancel"></input>
                 </div>
             </div>
 
             <div class='notes section-blue'>
                 <section>
-                    <a href="http://devdocs.io" target="_blank">Easy Develoment Docs</a>
-                </section>
-                <section>
-                    <a href="https://lifeformed.bandcamp.com/album/fastfall" target="_blank">Cool Soundtrack</a>
-                </section>
-                <section>
-                    <a href="http://www.github.com/fostersamuel" target="_blank">Github</a>
+                    <a href="http://devdocs.io" target="_blank">Easy Development Docs</a>
+                    <button class="kebab"><figure></figure><figure></figure><figure></figure></button>
                 </section>
             </div>
 
             <div class='notes section-orange'>
                 <section>
-                    <a href="http://devdocs.io" target="_blank">Easy Develoment Docs</a>
-                </section>
-                <section>
                     <a href="https://lifeformed.bandcamp.com/album/fastfall" target="_blank">Cool Soundtrack</a>
-                </section>
-                <section>
-                    <a href="http://www.github.com/fostersamuel" target="_blank">Github</a>
+                    <button class="kebab"><figure></figure><figure></figure><figure></figure></button>
                 </section>
             </div>
 
             <div class='notes section-green'>
                 <section>
-                    <a href="http://devdocs.io" target="_blank">Easy Develoment Docs</a>
-                </section>
-                <section>
-                    <a href="https://lifeformed.bandcamp.com/album/fastfall" target="_blank">Cool Soundtrack</a>
-                </section>
-                <section>
                     <a href="http://www.github.com/fostersamuel" target="_blank">Github</a>
+                    <button class="kebab"><figure></figure><figure></figure><figure></figure></button>
                 </section>
             </div>
         </div>
