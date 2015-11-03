@@ -215,7 +215,7 @@ footer a { color: #ededed; font-variant: small-caps; font-weight: bold;  text-de
     }
     
     .section-red section:first-child {
-        border-top: 10px solid blue;
+        border-top: 10px solid red;
     }
     
     .section-green section:first-child {
