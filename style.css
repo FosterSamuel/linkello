@@ -70,15 +70,17 @@ input{
     -webkit-appearance: none;
     border: none;
     background: transparent;
-    margin-right: 5%;
+    margin-right: 3px;
+    width: 20px;
+    height: 20px;
 }
 
 .kebab figure {
-    width: 6px;
-    height:6px;
+    width: 4px;
+    height:4px;
     border-radius: 5px;
     background: #9d9d9d;
-    margin: 3px 0;
+    margin: 3px auto;
 }
 
 input[name="startnote"] {
@@ -102,7 +104,10 @@ input[name="link"], input[name="name"], select {
     font-size: 1.3em;
 }
 
-select { width: 100%; }
+select { width: 100%;}
+
+select > option:disabled {
+}
 
 input[name='addnote'] {
     background: #62BCBF;
@@ -120,14 +125,14 @@ input[name='addnote'] {
 
 .notes { margin: 25px auto;}
 
-.section-blue section:first-child,
+.section-red section:first-child,
 .section-green section:first-child,
 .section-orange section:first-child {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
 
-.section-blue section:first-child {
+.section-red section:first-child {
     border-top: 5px solid red;
 }
 
@@ -209,7 +214,7 @@ footer a { color: #ededed; font-variant: small-caps; font-weight: bold;  text-de
         border-radius: 0;
     }
     
-    .section-blue section:first-child {
+    .section-red section:first-child {
         border-top: 10px solid blue;
     }
     
