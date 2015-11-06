@@ -4,8 +4,23 @@
 
 window.$ = function(selector) { return document.querySelector(selector); };
 
+// -----------------------------------------------------------------------------------//
+
 var links = new Array();
 var linkAmount = 0;
+
+var header = $('header');
+var startNote = $("input[name='startnote']");
+var newNote = $(".newnote");
+var addNote = $("input[name='addnote']");
+
+var noteName = $("input[name='name']");
+var noteLink = $("input[name='link']");
+var noteSection = $("select[name='section']");
+
+var sectionChild = $('.section-red section');
+var newNoteOpen = false;
+var lastNoteSection = "red";
 
 function createNoteHTML(linkIndex) {
     var noteObject = links[linkIndex];
@@ -31,20 +46,6 @@ function deleteNote(linkID) {
 addNoteToArray({name: "Easy Development Docs", link:"http://devdocs.io", id:linkAmount, section:"blue"});
 addNoteToArray({name: "Cool Soundtrack", link:"https://lifeformed.bandcamp.com/album/fastfall", id:linkAmount, section:"orange"});
 addNoteToArray({name: "Github", link:"http://www.github.com/fostersamuel", id:linkAmount, section:"green"});
-
-var header = $('header');
-
-var startNote = $("input[name='startnote']");
-var newNote = $(".newnote");
-var addNote = $("input[name='addnote']");
-
-var noteName = $("input[name='name']");
-var noteLink = $("input[name='link']");
-var noteSection = $("select[name='section']");
-
-var sectionChild = $('.section-red section');
-var newNoteOpen = false;
-var lastNoteSection = "red";
 
 startNote.addEventListener('click', toggleNewNote); 
 addNote.addEventListener('click', addNewNote);
@@ -111,4 +112,3 @@ document.addEventListener('keyup', function(e) {
         toggleNewNote();
     }
 });
-
