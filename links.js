@@ -29,7 +29,7 @@ function createNoteHTML(linkIndex) {
        newNote += "<a target='_blank' href='" + noteObject.link + "'>" + noteObject.name +  "  </a>";
        newNote += "<button class='kebab' onclick='showInfo(" + noteObject.id + ")'><figure></figure><figure></figure><figure></figure></button>";
        newNote += "<div class='moreinfo link-" + noteObject.id + " hidden'>";
-       newNote += "     <p>Added " +  new Date().toJSON().slice(0,10) + "</p>";
+       newNote += "     <p>Added: " +  new Date().toJSON().slice(0,10) + "</p>";
        newNote += "     <button onclick='deleteLink(" + noteObject.id + ")'>delete</button>";
        newNote += "</div>";
        newNote += "</section>";
