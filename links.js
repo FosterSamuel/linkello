@@ -1,6 +1,6 @@
 // Credit goes to Burke Holland for the code below that maps "$" to querySelector().
 // | source: http://modernweb.com/2013/05/06/5-things-you-should-stop-doing-with-jquery/
-// This is used in my attempt to rid Linkello of jQuery dependency. 
+// This is used to aid my removal of jQuery dependency in Linkello. 
 
 window.$ = function(selector) { return document.querySelector(selector); };
 
@@ -10,6 +10,7 @@ var links = new Array();
 var linkAmount = 0;
 
 var header = $('header');
+var inputArea = $('.inputarea');
 var startNote = $("input[name='startnote']");
 var newNote = $(".newnote");
 var addNote = $("input[name='addnote']");
@@ -24,10 +25,20 @@ var lastNoteSection = "red";
 
 function createNoteHTML(linkIndex) {
     var noteObject = links[linkIndex];
-    var $newNote = "<section class='note' data-id='" +noteObject.id + "'><a target='_blank' href='" + noteObject.link + "'>" + noteObject.name +  "  </a><button class='kebab'><figure></figure><figure></figure><figure></figure></button></section>";
-
-    return $newNote;
+    var newNote = "<section class='note' data-id='" +noteObject.id + "'>"
+       newNote += "<a target='_blank' href='" + noteObject.link + "'>" + noteObject.name +  "  </a>";
+       newNote += "<button class='kebab' onclick='showInfo(" + noteObject.id + ")'><figure></figure><figure></figure><figure></figure></button>";
+       newNote += "<div class='moreinfo link-" + noteObject.id + " hidden'>";
+       newNote += "     <p>Added " +  new Date().toJSON().slice(0,10) + "</p>";
+       newNote += "     <button onclick='deleteLink(" + noteObject.id + ")'>delete</button>";
+       newNote += "</div>";
+       newNote += "</section>";
+    return newNote;
 }
+function newNoteDiv(sectionName) {
+   return "<div class='notes section-" + sectionName + "'></div>";
+}
+
 function addNoteToArray(linkJSON) {
     links.push(linkJSON);
     linkAmount++;
@@ -43,7 +54,7 @@ function deleteNote(linkID) {
     }
 }
 
-addNoteToArray({name: "Easy Development Docs", link:"http://devdocs.io", id:linkAmount, section:"blue"});
+addNoteToArray({name: "Easy Development Docs", link:"http://devdocs.io", id:linkAmount, section:"red"});
 addNoteToArray({name: "Cool Soundtrack", link:"https://lifeformed.bandcamp.com/album/fastfall", id:linkAmount, section:"orange"});
 addNoteToArray({name: "Github", link:"http://www.github.com/fostersamuel", id:linkAmount, section:"green"});
 
@@ -77,9 +88,15 @@ function addNewNote() {
             sectionChild = $('.section-' + newNoteSection + ' section');
             lastNoteSection = newNoteSection;
         }
-
-        sectionChild.insertAdjacentHTML('beforebegin', createNoteHTML(linkAmount-1));
-
+        
+        if (sectionChild == null || sectionChild.parentElement == null) {
+            inputArea.insertAdjacentHTML('afterEnd', newNoteDiv(newNoteSection));
+            $('.section-'+newNoteSection).innerHTML = createNoteHTML(linkAmount-1);
+            sectionChild = $('.section-' + newNoteSection + ' section');
+        } else {
+            sectionChild.insertAdjacentHTML('beforeBegin', createNoteHTML(linkAmount-1));
+        }
+        
         toggleNewNote();
         noteName.value = '';
         noteLink.value = '';
@@ -112,3 +129,12 @@ document.addEventListener('keyup', function(e) {
         toggleNewNote();
     }
 });
+
+function showInfo(index) {
+    $(".link-" + index).classList.toggle('hidden');
+}
+function deleteLink(index) {
+    deleteNote(index);
+    var elem = $("section[data-id='" + index + "']");
+    elem.parentNode.removeChild(elem);
+}

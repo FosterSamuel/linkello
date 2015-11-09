@@ -23,24 +23,35 @@
                     <input type="submit" name="addnote" value="Add/Cancel"></input>
                 </div>
             </div>
+
             <div class='notes section-red'>
-                <section>
+                <section class="note" data-id="0">
                     <a href="http://devdocs.io" target="_blank">Easy Development Docs</a>
-                    <button class="kebab"><figure></figure><figure></figure><figure></figure></button>
+                    <button class="kebab" onclick="showInfo(0)"><figure></figure><figure></figure><figure></figure></button>
+                    <div class="moreinfo link-0 hidden">
+                        <p>Date Added: 11/6/2015</p>
+                        <button onclick="deleteLink(0)">delete</button>
+                    </div>
                 </section>
             </div>
-
             <div class='notes section-orange'>
-                <section>
+                <section class="note" data-id="1">
                     <a href="https://lifeformed.bandcamp.com/album/fastfall" target="_blank">Cool Soundtrack</a>
-                    <button class="kebab"><figure></figure><figure></figure><figure></figure></button>
+                    <button class="kebab" onclick="showInfo(1)"><figure></figure><figure></figure><figure></figure></button>
+                    <div class="moreinfo link-1 hidden">
+                        <p>Date Added: 11/6/2015</p>
+                        <button onclick="deleteLink(1)">delete</button>
+                    </div>
                 </section>
             </div>
-
             <div class='notes section-green'>
-                <section>
+                <section class="note" data-id="2">
                     <a href="http://www.github.com/fostersamuel" target="_blank">Github</a>
-                    <button class="kebab"><figure></figure><figure></figure><figure></figure></button>
+                    <button class="kebab" onclick="showInfo(2)"><figure></figure><figure></figure><figure></figure></button>
+                    <div class="moreinfo link-2 hidden">
+                        <p>Date Added: 11/6/2015</p>
+                        <button onclick="deleteLink(2)">Delete</button>
+                    </div>
                 </section>
             </div>
         </div>

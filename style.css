@@ -104,10 +104,8 @@ input[name="link"], input[name="name"], select {
     font-size: 1.3em;
 }
 
-select { width: 100%;}
+select { width: 100%; -webkit-appearance: none;}
 
-select > option:disabled {
-}
 
 input[name='addnote'] {
     background: #62BCBF;
@@ -172,6 +170,7 @@ footer {
     right: 0;
     position: relative;
     text-align: center;
+    padding-bottom: 20px;
 }
 
 footer a { color: #ededed; font-variant: small-caps; font-weight: bold;  text-decoration: underline;}
