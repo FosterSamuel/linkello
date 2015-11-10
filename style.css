@@ -121,7 +121,7 @@ input[name='addnote'] {
     -webkit-appearance: none;
 }
 
-.notes { margin: 25px auto;}
+.notes { margin: 20px auto;}
 
 .section-red section:first-child,
 .section-green section:first-child,
@@ -170,7 +170,7 @@ footer {
     right: 0;
     position: relative;
     text-align: center;
-    padding-bottom: 20px;
+    padding: 20px 0;
 }
 
 footer a { color: #ededed; font-variant: small-caps; font-weight: bold;  text-decoration: underline;}
@@ -196,12 +196,11 @@ footer a { color: #ededed; font-variant: small-caps; font-weight: bold;  text-de
     
     
     .inputarea {
-        width: 40%;
+        width: 29.997%;
     }
     
     .notes {
         width: 33.333%;
-        float: left;
     }
     
     .notes section {
@@ -211,6 +210,7 @@ footer a { color: #ededed; font-variant: small-caps; font-weight: bold;  text-de
         margin: 0 auto;
         border: none;
         border-radius: 0;
+        clear: both;
     }
     
     .section-red section:first-child {
@@ -226,10 +226,20 @@ footer a { color: #ededed; font-variant: small-caps; font-weight: bold;  text-de
     }
     
     .notes section a {
-        width: 100%;
+        width: 100px;
+        clear: both;
     }
     
-    footer {
-        clear:both;
+    .kebab {
+    width: 30px;
+    height: 30px;
+    }
+
+    .kebab figure {
+        width: 6px;
+        height:6px;
+        border-radius: 5px;
+        background: #9d9d9d;
+        margin: 3px auto;
     }
 }

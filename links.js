@@ -8,6 +8,7 @@ window.$ = function(selector) { return document.querySelector(selector); };
 
 var links = new Array();
 var linkAmount = 0;
+var linkID = 0;
 
 var header = $('header');
 var inputArea = $('.inputarea');
@@ -25,12 +26,12 @@ var lastNoteSection = "red";
 
 function createNoteHTML(linkIndex) {
     var noteObject = links[linkIndex];
-    var newNote = "<section class='note' data-id='" +noteObject.id + "'>"
+    var newNote = "<section class='note' index='" +noteObject.arrayIndex + "'>"
        newNote += "<a target='_blank' href='" + noteObject.link + "'>" + noteObject.name +  "  </a>";
-       newNote += "<button class='kebab' onclick='showInfo(" + noteObject.id + ")'><figure></figure><figure></figure><figure></figure></button>";
-       newNote += "<div class='moreinfo link-" + noteObject.id + " hidden'>";
+       newNote += "<button class='kebab' onclick='showInfo(this)'><figure></figure><figure></figure><figure></figure></button>";
+       newNote += "<div class='moreinfo hidden'>";
        newNote += "     <p>Added: " +  new Date().toJSON().slice(0,10) + "</p>";
-       newNote += "     <button onclick='deleteLink(" + noteObject.id + ")'>delete</button>";
+       newNote += "     <button onclick='deleteLink(this)'>delete</button>";
        newNote += "</div>";
        newNote += "</section>";
     return newNote;
@@ -41,22 +42,25 @@ function newNoteDiv(sectionName) {
 
 function addNoteToArray(linkJSON) {
     links.push(linkJSON);
+    linkID++;
     linkAmount++;
 }
-function deleteNote(linkID) {
-    links.splice(linkID, 1);
+function deleteNote(specificLinkID) {
+    links.splice(specificLinkID, 1);
     linkAmount--;
 
-    if(linkAmount > linkID) {
-        for(var i = linkID; i < linkAmount; i++) {
-            links[i].id = i;
+    if(linkAmount > specificLinkID) {
+        for(var i = specificLinkID; i < linkAmount; i++) {
+            links[i].arrayIndex = i;
         }
     }
 }
 
-addNoteToArray({name: "Easy Development Docs", link:"http://devdocs.io", id:linkAmount, section:"red"});
-addNoteToArray({name: "Cool Soundtrack", link:"https://lifeformed.bandcamp.com/album/fastfall", id:linkAmount, section:"orange"});
-addNoteToArray({name: "Github", link:"http://www.github.com/fostersamuel", id:linkAmount, section:"green"});
+addNoteToArray({name: "Easy Development Docs", link:"http://devdocs.io", id:linkID, arrayIndex: linkAmount, section:"red"});
+addNoteToArray({name: "Cool Soundtrack", link:"https://lifeformed.bandcamp.com/album/fastfall", id:linkID, arrayIndex: linkAmount, section:"orange"});
+addNoteToArray({name: "Github", link:"http://www.github.com/fostersamuel", id:linkID, arrayIndex: linkAmount, section:"green"});
+
+console.log(links[2]);
 
 startNote.addEventListener('click', toggleNewNote); 
 addNote.addEventListener('click', addNewNote);
@@ -82,13 +86,13 @@ function addNewNote() {
             newNoteLink = "http://" + newNoteLink;
         }
 
-        addNoteToArray({name: newNoteName, link: newNoteLink, id: linkAmount, section: newNoteSection});
+        addNoteToArray({name: newNoteName, link: newNoteLink, id: linkID, arrayIndex: linkAmount, section: newNoteSection});
 
         if(newNoteSection != lastNoteSection) {
             sectionChild = $('.section-' + newNoteSection + ' section');
             lastNoteSection = newNoteSection;
         }
-        
+
         if (sectionChild == null || sectionChild.parentElement == null) {
             inputArea.insertAdjacentHTML('afterEnd', newNoteDiv(newNoteSection));
             $('.section-'+newNoteSection).innerHTML = createNoteHTML(linkAmount-1);
@@ -111,18 +115,31 @@ document.addEventListener('keypress', function(e) {
 
     if(key == 13) {
         if(focusedElement != startNote && focusedElement != addNote) {
-            if(newNoteOpen) {  
+            if(focusedElement != null && focusedElement.classList != "kebab" && focusedElement.classList != "deletebutton" ) {
+                if(newNoteOpen) {  
+                    if(noteName.value != "" && noteLink.value != "") {
+                        addNewNote();
+                    } else {
+                        toggleNewNote();   
+                    }
+                } else {
+                    toggleNewNote();   
+                }
+            } else if(focusedElement == null) {
+                if(newNoteOpen) {  
                 if(noteName.value != "" && noteLink.value != "") {
                     addNewNote();
                 } else {
                     toggleNewNote();   
                 }
             } else {
-                toggleNewNote();   
+                    toggleNewNote();   
+                }
             }
         }
-    }      
+    }
 });
+
 document.addEventListener('keyup', function(e) {
     var key = e.keyCode || e.which;
     if(key == 27 && newNoteOpen) {
@@ -131,10 +148,23 @@ document.addEventListener('keyup', function(e) {
 });
 
 function showInfo(index) {
-    $(".link-" + index).classList.toggle('hidden');
+    if(index.parentNode.childNodes[2].classList != null) {
+        index.parentNode.childNodes[2].classList.toggle('hidden');
+    } else {
+        index.parentNode.childNodes[5].classList.toggle('hidden');
+    }
 }
 function deleteLink(index) {
-    deleteNote(index);
-    var elem = $("section[data-id='" + index + "']");
-    elem.parentNode.removeChild(elem);
+    var noteArea = index.parentNode.parentNode.parentNode;
+    var specificSection = index.parentNode.parentNode;
+    
+    if(noteArea.childElementCount != 1) {
+        noteArea.removeChild(specificSection);
+    } else {
+        if(noteArea.getAttribute('class').substr(14, 10) == lastNoteSection) {
+            sectionChild = null;
+        }
+        deleteNote(specificSection.getAttribute('index'));
+        noteArea.parentNode.removeChild(noteArea);
+    }
 }
