@@ -1,4 +1,4 @@
-* {padding: 0; margin: 0; font-family: monospace;}
+* {padding: 0; margin: 0; font-family: monospace; text-align: center;}
 body {background: #3f7779;}
 
 .notes, footer{width: 90%; margin: 0 auto; display: block;}
@@ -9,13 +9,10 @@ header {
     background: white;
     color: #62BCBF;
     font-size: 3em;
-    font-weight: 200;
     height: auto;
     letter-spacing: 6px;
-    padding: 5% 0;
-    text-align: center;
+    padding: 2% 0;
 }
-
 header.opposite {
     -webkit-animation-fill-mode: forwards;
     -webkit-animation-name: header;
@@ -30,8 +27,6 @@ header.opposite {
     background-color: #62BCBF; 
     color: white;
 }
-
-
 @keyframes header {
     0% {background-color: white; color: #62BCBF;}
     100% {background-color: #62BCBF; color: white;}
@@ -62,44 +57,23 @@ input{
     display: block;
     margin: 0 auto;
     width: 100%;
+    text-align: left;
 }
 
-.kebab {
-    cursor: pointer;
-    float: right;
-    -webkit-appearance: none;
-    border: none;
-    background: transparent;
-    margin-right: 3px;
-    width: 20px;
-    height: 20px;
-}
-
-.kebab figure {
-    width: 4px;
-    height:4px;
-    border-radius: 5px;
-    background: #9d9d9d;
-    margin: 3px auto;
-}
-
-input[name="startnote"] {
+.startnote {
     background: #62BCBF;
-    border: 1px transparent;
-    border-bottom: 3px solid #4a9295;
-    border-radius: 0px;
+    border-bottom: none;
+    border-top: 3px solid #75d9dd;
     color: white;
-    display: block;
     font-size: 3em;
-    margin: 0px auto;
-    width: 100%;
+    text-align: center;
 }
 
-input[name="link"] {
+.notelink {
     border-bottom: 2px solid #1db4b9;
 }
 
-input[name="link"], input[name="name"], select {
+.notelink, .notename, select {
     font-family: sans-serif;
     font-size: 1.3em;
 }
@@ -109,16 +83,11 @@ select { width: 100%; -webkit-appearance: none;}
 
 input[name='addnote'] {
     background: #62BCBF;
-    border-radius: 0;
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
     border-top: none;
     color: white;
     font-size: 1.8em;
     padding: 2% 0;
-    -webkit-border-radius:0px;
-    -webkit-appearance: none;
+    text-align: center;
 }
 
 .notes { margin: 20px auto;}
@@ -162,6 +131,25 @@ a {
     color: #62BCBF;
     font-size: 1.3em;
     text-decoration: none;
+}
+
+.kebab {
+    cursor: pointer;
+    float: right;
+    -webkit-appearance: none;
+    border: none;
+    background: transparent;
+    margin-right: 3px;
+    width: 20px;
+    height: 100%;
+}
+
+.kebab figure {
+    width: 4px;
+    height:4px;
+    border-radius: 5px;
+    background: #9d9d9d;
+    margin: 3px auto;
 }
 
 footer {

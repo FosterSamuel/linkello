@@ -12,12 +12,12 @@ var linkID = 0;
 
 var header = $('header');
 var inputArea = $('.inputarea');
-var startNote = $("input[name='startnote']");
+var startNote = $(".startnote");
 var newNote = $(".newnote");
 var addNote = $("input[name='addnote']");
 
-var noteName = $("input[name='name']");
-var noteLink = $("input[name='link']");
+var noteName = $(".notename");
+var noteLink = $(".notelink");
 var noteSection = $("select[name='section']");
 
 var sectionChild = $('.section-red section');
@@ -99,6 +99,7 @@ function addNewNote() {
             sectionChild = $('.section-' + newNoteSection + ' section');
         } else {
             sectionChild.insertAdjacentHTML('beforeBegin', createNoteHTML(linkAmount-1));
+            sectionChild = $('.section-' + newNoteSection + ' section');
         }
         
         toggleNewNote();
