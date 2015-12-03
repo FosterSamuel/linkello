@@ -142,6 +142,7 @@ a {
     margin-right: 3px;
     width: 20px;
     height: 100%;
+    outline: none;
 }
 
 .kebab figure {
@@ -150,6 +151,18 @@ a {
     border-radius: 5px;
     background: #9d9d9d;
     margin: 3px auto;
+}
+
+.moreinfo {
+    font-size: .9em;
+}
+
+.deletebutton {
+    font-variant:  small-caps;
+    font-size: 1em;
+    width: 30%;
+    text-align: center;
+    margin-top: 5px;
 }
 
 footer {
@@ -179,26 +192,26 @@ footer a { color: #ededed; font-variant: small-caps; font-weight: bold;  text-de
 /* Portrait tablets and larger */
 @media screen and (min-width: 768px) {
     header {
-        padding: 2% 0;
+        padding: 1% 0;
     }
-    
     
     .inputarea {
         width: 29.997%;
     }
     
     .notes {
-        width: 33.333%;
+        width: 30%;
+        float: left;
+        position: relative;
+        z-index: 3;
     }
     
-    .notes section {
+    .note {
         width: 90%;
-        display: block;
         padding: 5% 0;
         margin: 0 auto;
         border: none;
         border-radius: 0;
-        clear: both;
     }
     
     .section-red section:first-child {
@@ -216,18 +229,42 @@ footer a { color: #ededed; font-variant: small-caps; font-weight: bold;  text-de
     .notes section a {
         width: 100px;
         clear: both;
+        font-size: .9em;
     }
     
     .kebab {
-    width: 30px;
-    height: 30px;
+        width: 20px;
+        height: 20px;
     }
 
     .kebab figure {
-        width: 6px;
-        height:6px;
-        border-radius: 5px;
+        width: 4px;
+        height:4px;
+        border-radius: 3px;
         background: #9d9d9d;
         margin: 3px auto;
     }
+    
+    
+    
+    footer {
+        clear: both;
+    }
+
+}
+
+@media screen and (min-width: 1600px) {
+    .notes {
+        width: 20%;
+        float: left;
+        position: relative;
+        z-index: 3;
+    }
+    
+    section {
+        font-size: 1.7em;
+    }
+    
+    .moreinfo {
+        font-size: .8em;
 }

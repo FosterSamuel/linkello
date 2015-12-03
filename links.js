@@ -31,7 +31,7 @@ function createNoteHTML(linkIndex) {
        newNote += "<button class='kebab' onclick='showInfo(this)'><figure></figure><figure></figure><figure></figure></button>";
        newNote += "<div class='moreinfo hidden'>";
        newNote += "     <p>Added: " +  new Date().toJSON().slice(0,10) + "</p>";
-       newNote += "     <button onclick='deleteLink(this)'>delete</button>";
+       newNote += "     <button onclick='deleteLink(this)' class='deletebutton'>delete</button>";
        newNote += "</div>";
        newNote += "</section>";
     return newNote;
